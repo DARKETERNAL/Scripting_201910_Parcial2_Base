@@ -9,9 +9,10 @@ public abstract class State : MonoBehaviour
 
     private void SwitchToNextState()
     {
+        Toggle(false);
+
         if (nextState != null)
         {
-            Toggle(false);
             nextState.Toggle(true);
         }
     }

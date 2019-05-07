@@ -2,12 +2,16 @@
 
 public class Player : Character
 {
+    private static Player instance;
+
     private float rotSpeed = 5F;
     private float movSpeed = 10F;
 
     private float hVal = 0F;
     private float vVal = 0F;
     private float pitchVal = 0F;
+
+    public static Player Instance { get => instance; set => instance = value; }
 
     protected virtual void Update()
     {
@@ -34,6 +38,18 @@ public class Player : Character
         if (Input.GetKeyDown(KeyCode.Space))
         {
             SpawnBullet();
+        }
+    }
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
         }
     }
 }

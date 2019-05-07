@@ -1,7 +1,19 @@
-﻿public class DoKamikazeAttack : Task
+﻿using UnityEngine.AI;
+
+public class DoKamikazeAttack : Task
 {
     public override bool Execute()
     {
-        throw new System.NotImplementedException();
+        bool result = true;
+
+        if (TargetAI != null)
+        {
+            while (true)
+            {
+                TargetAI.GetComponent<NavMeshAgent>().SetDestination(Player.Instance.transform.position);
+            } 
+        }
+
+        return result;
     }
 }

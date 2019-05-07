@@ -2,6 +2,18 @@
 {
     public override bool Execute()
     {
-        throw new System.NotImplementedException();
+        bool result = true;
+
+        if (TargetAI != null)
+        {
+            AICharacter ai = TargetAI.GetComponent<AICharacter>();
+
+            if (ai)
+            {
+                ai.Attack();
+            }
+        }
+
+        return result;
     }
 }
